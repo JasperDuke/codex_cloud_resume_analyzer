@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: resume-analyzer
+    runtime: docker
+    plan: starter
+    region: oregon
+    healthCheckPath: /health
+    dockerfilePath: ./Dockerfile
+    envVars:
+      - key: DATABASE_PATH
+        value: /var/data/resume-analyzer.db
+    disk:
+      name: resume-analyzer-data
+      mountPath: /var/data
+      sizeGB: 1
